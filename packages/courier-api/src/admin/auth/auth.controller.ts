@@ -1,14 +1,6 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  UnauthorizedException,
-  UseGuards,
-} from '@nestjs/common';
-import { JwtAdminAuthGuard } from './jwt.guard';
+import { Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
 import { AdminService } from '../admin/admin.service';
-import { LoginDto, RefreshTokenDto } from '../me/dto';
+import { LoginDto, RefreshTokenDto } from '../model';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
