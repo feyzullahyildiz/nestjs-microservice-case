@@ -3,8 +3,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AuthController } from './auth.controller';
 import * as request from 'supertest';
 import { AdminService } from '../admin/admin.service';
-// import { AuthService } from './auth.service';
-// import { JwtService } from '@nestjs/jwt';
 import { AppModule } from '../../app.module';
 
 describe('AuthController', () => {

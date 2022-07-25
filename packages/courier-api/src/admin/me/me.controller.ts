@@ -1,9 +1,11 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { JwtAdminAuthGuard } from '../../auth/jwt.auth-guard';
 
+@UseGuards(JwtAdminAuthGuard)
 @Controller('me')
 export class MeController {
   @Get()
-  getHello(): string {
-    return 'hello admin';
+  getHello() {
+    return { message: 'hello admin' };
   }
 }
