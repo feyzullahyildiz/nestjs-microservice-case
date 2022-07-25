@@ -15,4 +15,10 @@ export class AdminService {
   async updateUserRefreshToken(userid: string, refreshToken: string) {
     return Promise.resolve(true);
   }
+  async getUserByRefreshToken(refreshToken: string) {
+    return Promise.resolve({
+      id: '123123',
+      email: 'a@b.com',
+    });
+  }
 }
