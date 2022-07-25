@@ -6,7 +6,7 @@ import {
   UnauthorizedException,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAdminAuthGuard } from '../../auth/jwt.auth-guard';
+import { JwtAdminAuthGuard } from './jwt.guard';
 import { AdminService } from '../admin/admin.service';
 import { LoginDto, RefreshTokenDto } from '../me/dto';
 import { AuthService } from './auth.service';
