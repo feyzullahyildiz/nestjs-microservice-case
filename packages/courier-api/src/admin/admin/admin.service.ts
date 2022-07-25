@@ -8,4 +8,11 @@ export class AdminService {
       email,
     };
   }
+  async isUserAvailable(userid: string) {
+    // TODO check user active state
+    return Promise.resolve(true);
+  }
+  async updateUserRefreshToken(userid: string, refreshToken: string) {
+    return Promise.resolve(true);
+  }
 }

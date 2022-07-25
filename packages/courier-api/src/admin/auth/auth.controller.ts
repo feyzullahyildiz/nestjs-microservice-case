@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Req,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { Request } from 'express';
 import { AdminService } from '../admin/admin.service';
 import { LoginDto } from '../me/dto';
@@ -19,16 +26,21 @@ export class AuthController {
     );
     if (!user) {
       // TODO throw custom error.
-      throw new Error('UnAuthorized');
+      throw new UnauthorizedException();
     }
-    const token = this.authService.getAuthToken(user.id);
-    const refreshToken = this.authService.getRefreshToken(user.id);
+    const token = await this.authService.getAuthToken(user.id);
+    const refreshToken = await this.authService.getRefreshToken(user.id);
+    await this.adminService.updateUserRefreshToken(user.id, refreshToken);
     return { token, refreshToken };
   }
   // CHECK AUTH HERE
   @Get('refresh')
   async getRefreshToken(@Req() req: Request) {
     const id = 'user_id';
+    const isActive = await this.adminService.isUserAvailable(id);
+    if (isActive) {
+      throw new UnauthorizedException();
+    }
     const token = this.authService.getAuthToken(id);
     return { token };
   }
