@@ -9,8 +9,6 @@ function assignEnv(key, defaultValue) {
 
 import { Module } from '@nestjs/common';
 import { RouterModule } from '@nestjs/core';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { CourierModule } from './courier/courier.module';
 import { AdminModule } from './admin/admin.module';
 
@@ -23,17 +21,7 @@ import { AdminModule } from './admin/admin.module';
       { path: 'courier', module: CourierModule },
     ]),
   ],
-  controllers: [AppController],
-  providers: [
-    AppService,
-    // {
-    //   provide: 'ADMIN_SECRET_KEY',
-    //   useValue: secretKey + '_ADMIN_',
-    // },
-    // {
-    //   provide: 'COURIER_SECRET_KEY',
-    //   useValue: secretKey,
-    // },
-  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
