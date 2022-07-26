@@ -6,6 +6,7 @@ declare global {
       FIRST_ADMIN_PLAIN_PASSWORD: string;
 
       MONGO_CONNECTION_STRING: string;
+      RABBITMQ_CONNECTION: string;
 
       JWT_SECRET_REFRESH_KEY_ADMIN: string;
       JWT_SECRET_REFRESH_KEY_COURIER: string;

@@ -7,8 +7,13 @@ import { CourierService } from './courier.service';
 import { CourierMeController } from './me/me.controller';
 import { Courier, CourierSchema } from '../schemas/courier.schema';
 import { MongooseModule } from '@nestjs/mongoose';
+
+import {} from 'amqp-connection-manager';
+import { ClientsModule, Transport } from '@nestjs/microservices';
+import { CourierController } from './auth/auth.controller';
+
 export const imports = [JwtModule.register({})];
-export const controllers = [CourierMeController];
+export const controllers = [CourierMeController, CourierController];
 export const providers = [
   JwtCourierStrategy,
   JwtCourierAuthGuard,
@@ -22,6 +27,16 @@ export const providers = [
       {
         name: Courier.name,
         schema: CourierSchema,
+      },
+    ]),
+    ClientsModule.register([
+      {
+        name: 'COURIER_LOCATION_RABBITMQ',
+        transport: Transport.RMQ,
+        options: {
+          urls: [process.env.RABBITMQ_CONNECTION],
+          queue: 'location-update',
+        },
       },
     ]),
   ],

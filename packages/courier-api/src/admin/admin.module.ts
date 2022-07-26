@@ -13,7 +13,7 @@ import { Courier, CourierSchema } from '../schemas/courier.schema';
 import { CourierController } from './courier/courier.controller';
 
 export const imports = [JwtModule.register({})];
-export const controllers = [MeController, AuthController, CourierController];
+export const controllers = [MeController, AuthController];
 export const providers = [
   AuthService,
   AdminService,

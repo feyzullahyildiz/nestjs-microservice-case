@@ -3,7 +3,7 @@ import { CourierLoginDto } from '../model';
 import { CourierAuthService } from './courier_auth.service';
 
 @Controller('auth')
-export class CourierAuth {
+export class CourierController {
   constructor(private readonly courierAuthService: CourierAuthService) {}
   @Post('login')
   async login(@Body() body: CourierLoginDto) {

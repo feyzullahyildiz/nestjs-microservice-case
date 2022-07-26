@@ -13,6 +13,12 @@ import { imports, controllers, providers } from './courier.module';
         findOne: jest.fn(),
       },
     },
+    {
+      provide: 'COURIER_LOCATION_RABBITMQ',
+      useValue: {
+        emit: jest.fn(),
+      },
+    },
     ...providers,
   ],
 })

@@ -1,5 +1,6 @@
 import {
   IsDate,
+  IsDateString,
   IsEmail,
   IsNotEmpty,
   IsNumber,
@@ -32,6 +33,6 @@ export class UpdateLocation {
   lon: number;
 
   @IsNotEmpty()
-  @IsDate()
+  @IsDateString()
   date: Date;
 }
