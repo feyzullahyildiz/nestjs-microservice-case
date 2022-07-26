@@ -1,7 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { AdminUser, AdminUserDocument } from '../../schemas/admin.schema';
 
 @Injectable()
 export class AdminService {
+  constructor(
+    @InjectModel(AdminUser.name) private adminModel: Model<AdminUserDocument>,
+  ) {}
   async getWithEmailAndPassword(email: string, password: string) {
     return {
       id: '123123',

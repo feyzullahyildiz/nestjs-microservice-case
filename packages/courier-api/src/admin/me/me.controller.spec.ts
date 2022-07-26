@@ -1,23 +1,20 @@
-import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppModule } from '../../app.module';
 import { MeController } from './me.controller';
 import * as request from 'supertest';
 import { AuthService } from '../auth/auth.service';
+import { initTest, TestAppModule } from '../../test/test-app.module';
 
-describe('MeController', () => {
+describe.only('MeController', () => {
   let controller: MeController;
   let authService: AuthService;
-  let app: INestApplication;
+  // let app: INestApplication;
   let server: any;
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [TestAppModule],
     }).compile();
-    app = module.createNestApplication();
-    app.useGlobalPipes(new ValidationPipe());
-    server = app.getHttpServer();
-    await app.init();
+    const { application } = await initTest(module);
+    server = application.getHttpServer();
     // controller = module.get<AuthController>(AuthController);
     // adminService = module.get<AdminService>(AdminService);
     controller = module.get<MeController>(MeController);

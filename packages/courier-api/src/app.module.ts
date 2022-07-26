@@ -11,6 +11,8 @@ import { Module } from '@nestjs/common';
 import { RouterModule } from '@nestjs/core';
 import { CourierModule } from './courier/courier.module';
 import { AdminModule } from './admin/admin.module';
+import { getModelToken, MongooseModule } from '@nestjs/mongoose';
+import { AdminUser, AdminUserSchema } from './schemas/admin.schema';
 
 @Module({
   imports: [
@@ -20,6 +22,7 @@ import { AdminModule } from './admin/admin.module';
       { path: 'admin', module: AdminModule },
       { path: 'courier', module: CourierModule },
     ]),
+    MongooseModule.forRoot(process.env.MONGO_CONNECTION_STRING),
   ],
   controllers: [],
   providers: [],

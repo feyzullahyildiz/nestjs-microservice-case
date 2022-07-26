@@ -5,9 +5,16 @@ import { JwtCourierAuthGuard } from './auth/jwt.guard';
 import { JwtCourierStrategy } from './auth/jwt.strategy';
 import { CourierMeController } from './me/me.controller';
 
+export const imports = [JwtModule.register({})];
+export const controllers = [CourierMeController];
+export const providers = [
+  JwtCourierStrategy,
+  JwtCourierAuthGuard,
+  CourierAuthService,
+];
 @Module({
-  imports: [JwtModule.register({})],
-  controllers: [CourierMeController],
-  providers: [JwtCourierStrategy, JwtCourierAuthGuard, CourierAuthService],
+  imports,
+  controllers,
+  providers,
 })
 export class CourierModule {}
