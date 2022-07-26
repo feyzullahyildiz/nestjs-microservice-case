@@ -34,5 +34,5 @@ export class UpdateLocation {
 
   @IsNotEmpty()
   @IsDateString()
-  date: Date;
+  date: string;
 }
