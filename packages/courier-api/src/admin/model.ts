@@ -15,3 +15,22 @@ export class RefreshTokenDto {
   @IsString()
   refreshToken: string;
 }
+
+export class CreateCourier {
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
+
+  @IsNotEmpty()
+  @IsString()
+  password: string;
+}
+export class ChangeCourierActive {
+  @IsNotEmpty()
+  @IsString()
+  id: string;
+
+  @IsNotEmpty()
+  @IsString()
+  active: boolean;
+}

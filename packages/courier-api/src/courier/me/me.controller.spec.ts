@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CourierMeController } from './me.controller';
 import * as request from 'supertest';
-import { CourierAuthService } from '../auth/auth.service';
+import { CourierAuthService } from '../auth/courier_auth.service';
 import { initTest, TestAppModule } from '../../test/test-app.module';
 
 describe('MeController', () => {
