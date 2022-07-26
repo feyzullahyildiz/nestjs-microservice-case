@@ -8,7 +8,9 @@ import { imports, controllers, providers } from './admin.module';
   providers: [
     {
       provide: getModelToken(AdminUser.name),
-      useValue: jest.fn(),
+      useValue: {
+        findOne: jest.fn(),
+      },
     },
     ...providers,
   ],

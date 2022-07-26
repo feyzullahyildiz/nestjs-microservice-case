@@ -3,6 +3,9 @@ assignEnv('JWT_SECRET_REFRESH_KEY_COURIER', 'refresh_secret_COURIER');
 assignEnv('JWT_SECRET_KEY_ADMIN', 'secret_ADMIN');
 assignEnv('JWT_SECRET_KEY_COURIER', 'secret_COURIER');
 
+assignEnv('FIRST_ADMIN_EMAIL', 'admin@admin.com');
+assignEnv('FIRST_ADMIN_PLAIN_PASSWORD', 'admin@admin.com');
+
 function assignEnv(key, defaultValue) {
   process.env[key] = process.env[key] || defaultValue;
 }
@@ -11,8 +14,7 @@ import { Module } from '@nestjs/common';
 import { RouterModule } from '@nestjs/core';
 import { CourierModule } from './courier/courier.module';
 import { AdminModule } from './admin/admin.module';
-import { getModelToken, MongooseModule } from '@nestjs/mongoose';
-import { AdminUser, AdminUserSchema } from './schemas/admin.schema';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
