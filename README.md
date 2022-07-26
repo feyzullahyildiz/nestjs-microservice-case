@@ -21,6 +21,7 @@ Imagine there are 7000 couriers in your company and They are working at the same
     - This is written typescript **without** a framework. It is written via `ts-node`
 - `shared-data`
     - This application exports interfaces to these applications
+- I tried this architecture [here](https://github.com/feyzullahyildiz/tg-test-microservice) and it is working
 
 ## Courier API
 - /api/v1/admin/auth/login (POST)
